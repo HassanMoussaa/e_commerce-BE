@@ -9,6 +9,17 @@ class Product extends Model
 {
     use HasFactory;
     protected $table = 'products';
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'name',
+        'description',
+        'category_id',
+        // 'image_url',
+    ];
+
+
     public function category()
     {
         return $this->belongsTo(Category::class);
