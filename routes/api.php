@@ -31,3 +31,4 @@ Route::controller(AuthController::class)->group(function () {
 Route::get('/products', [ProductController::class, 'getProducts']);
 Route::delete('/products/delete/{id}', [ProductController::class, 'deleteProduct']);
 Route::post('/products/add', [ProductController::class, 'productsAdd']);
+Route::put('/products/update/{id}', [ProductController::class, 'productsUpdate']);
