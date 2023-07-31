@@ -60,10 +60,7 @@ class AuthController extends Controller
         ]);
 
 
-        // // Create a new cart for the user
-        // $cart = Cart::create([
-        //     'user_id' => $user->id,
-        // ]);
+
 
         try {
             $cart = Cart::create([
@@ -76,18 +73,14 @@ class AuthController extends Controller
                 'cart' => $cart
             ]);
         } catch (\Exception $e) {
-            // Log the error or send it as a response for debugging
+
             return response()->json([
                 'message' => 'Error occurred during registration',
                 'error' => $e->getMessage(),
             ], 500);
         }
 
-        // return response()->json([
-        //     'message' => 'User created successfully',
-        //     'user' => $user,
-        //     'cart' => $cart
-        // ]);
+
     }
 
     public function logout()
