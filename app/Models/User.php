@@ -70,5 +70,8 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasOne(Cart::class);
     }
 
-
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
 }

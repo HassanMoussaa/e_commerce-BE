@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\FavoritesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +37,5 @@ Route::middleware('auth:api')->group(function () {
     Route::put('/products/update/{id}', [ProductController::class, 'productsUpdate']);
     Route::post('/add_to_cart', [CartController::class, 'addToCart']);
     Route::get('/cart_items', [CartController::class, 'getCartItems']);
+    Route::post('/favorites/add', [FavoritesController::class, 'addFavorite']);
 });
