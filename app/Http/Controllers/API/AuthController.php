@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Cart;
 
 
 class AuthController extends Controller
@@ -58,10 +59,35 @@ class AuthController extends Controller
             'user_types_id' => $request->user_types_id,
         ]);
 
-        return response()->json([
-            'message' => 'User created successfully',
-            'user' => $user
-        ]);
+
+        // // Create a new cart for the user
+        // $cart = Cart::create([
+        //     'user_id' => $user->id,
+        // ]);
+
+        try {
+            $cart = Cart::create([
+                'user_id' => $user->id,
+            ]);
+
+            return response()->json([
+                'message' => 'User created successfully',
+                'user' => $user,
+                'cart' => $cart
+            ]);
+        } catch (\Exception $e) {
+            // Log the error or send it as a response for debugging
+            return response()->json([
+                'message' => 'Error occurred during registration',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+
+        // return response()->json([
+        //     'message' => 'User created successfully',
+        //     'user' => $user,
+        //     'cart' => $cart
+        // ]);
     }
 
     public function logout()
