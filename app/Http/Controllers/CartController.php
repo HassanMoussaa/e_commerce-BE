@@ -46,4 +46,24 @@ class CartController extends Controller
             return response()->json(['message' => 'An error occurred. Please try again later.', 'error' => $e->getMessage()], 500);
         }
     }
+
+    public function getCartItems(Request $request)
+    {
+        $user = $request->user();
+        $cart = $user->cart;
+
+        // Check if the user has a cart
+        if (!$cart) {
+            return response()->json(['message' => 'Cart not found'], 404);
+        }
+
+        $cartItems = CartItem::where('cart_id', $cart->id)->get();
+
+        return response()->json(['cart_items' => $cartItems]);
+    }
+
+
+
+
+
 }

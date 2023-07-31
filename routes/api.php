@@ -35,4 +35,5 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/products/add', [ProductController::class, 'productsAdd']);
     Route::put('/products/update/{id}', [ProductController::class, 'productsUpdate']);
     Route::post('/add_to_cart', [CartController::class, 'addToCart']);
+    Route::get('/cart_items', [CartController::class, 'getCartItems']);
 });
