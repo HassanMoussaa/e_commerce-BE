@@ -34,7 +34,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/products', [ProductController::class, 'getProducts']);
     Route::delete('/products/delete/{id}', [ProductController::class, 'deleteProduct']);
     Route::post('/products/add', [ProductController::class, 'productsAdd']);
-    Route::put('/products/update/{id}', [ProductController::class, 'productsUpdate']);
+    Route::post('/products/update/{id}', [ProductController::class, 'productsUpdate']);
     Route::post('/add_to_cart', [CartController::class, 'addToCart']);
     Route::get('/cart_items', [CartController::class, 'getCartItems']);
     Route::post('/favorites/add', [FavoritesController::class, 'addFavorite']);
